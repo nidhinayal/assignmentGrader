@@ -52,5 +52,5 @@ def user_login(request):
             return HttpResponse('Invalid login credentials')
 
     else:
-        return render(request, 'portal/login.html', {})
-        
+        return render(request, 'login.html', {})
+

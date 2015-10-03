@@ -17,8 +17,8 @@ from django.conf.urls import include, url, patterns
 from django.contrib import admin
 
 urlpatterns = patterns('',
-      (r'^register/$','portal.views.register',name='register'), 
-      (r'^login/$', 'portal.views.user_login', name='login')
+      ('^register/$','portal.views.register'), 
+      ('^login/$', 'portal.views.user_login')
 )
 
 #urlpatterns = [
