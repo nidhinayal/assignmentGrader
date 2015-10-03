@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django import forms
 from portal import models
 from portal.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
 
 # Create your views here.
 def register(request):
@@ -34,3 +36,21 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
     return render(request, 'register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': regStatus})
+
+def user_login(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user:
+            login(request, user)
+            return HttpResponseRedirect('/portal/')
+        else:
+            return HttpResponse('Invalid login credentials')
+
+    else:
+        return render(request, 'portal/login.html', {})
+        
