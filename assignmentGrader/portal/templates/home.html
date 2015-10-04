@@ -4,7 +4,9 @@
         <title> Home </title>
     </head>
     <body>
-
+        {% if user.is_authenticated %}
+        <p> WELCOME, thanks for logging in {{user.username}} </p>
+        {% endif %}
     </body>
     
 </html>
