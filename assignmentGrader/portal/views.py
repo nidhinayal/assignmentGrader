@@ -56,4 +56,4 @@ def user_login(request):
 @login_required
 def homepage(request):
 
-    return render(request, 'home.html', {'user': user})
+    return render(request, 'home.html', {})
