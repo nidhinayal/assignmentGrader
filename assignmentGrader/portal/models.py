@@ -10,4 +10,12 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.username
 
+class Problems(models.Model):
+
+    #status of the problem
+    problem_description = models.TextField()
+    problem_title = models.CharField(max_length=20)
+    test_cases = models.TextField()
+    answer_file = models.TextField()
+    user = models.ManyToManyField(User)
 
