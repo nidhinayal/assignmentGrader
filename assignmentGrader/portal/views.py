@@ -4,7 +4,7 @@ from portal import models
 from portal.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def register(request):
 
@@ -47,12 +47,13 @@ def user_login(request):
 
         if user:
             login(request, user)
-            return HttpResponseRedirect('/portal/')
+            return HttpResponseRedirect('/home/')
         else:
             return HttpResponse('Invalid login credentials')
 
     else:
         return render(request, 'login.html', {})
-
+@login_required
 def homepage(request):
-    return render(request, 'home.html', {})
+
+    return render(request, 'home.html', {'username': username})
