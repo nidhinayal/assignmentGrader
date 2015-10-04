@@ -54,3 +54,5 @@ def user_login(request):
     else:
         return render(request, 'login.html', {})
 
+def homepage(request):
+    return render(request, 'home.html', {})
