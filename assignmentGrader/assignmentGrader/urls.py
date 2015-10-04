@@ -18,7 +18,7 @@ from django.contrib import admin
 
 urlpatterns = patterns('',
       ('^home/$', 'portal.views.homepage'),
-      ('^/register/$','portal.views.register'), 
+      ('^register/$','portal.views.register'), 
       ('^login/$', 'portal.views.user_login')
 )
 
