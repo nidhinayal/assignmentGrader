@@ -17,7 +17,8 @@ def register(request):
 
         if user_form.is_valid() and profile_form.is_valid():
             user=user_form.save()
-        #hash the password for security using the djangohash default method
+
+            #hash the password for security using the djangohash default method
             user.set_password(user.password)
             user.save()
 
@@ -26,15 +27,17 @@ def register(request):
 
             if 'profile_pic' in request.FILES:
                 profile_pic = request.FILES['profile_pic']
-
             profile.save()
 
             regStatus = True
+
         else:
             print user_form.errors, profile_form.errors
+    
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
+    
     return render(request, 'register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': regStatus})
 
 def user_login(request):
@@ -53,7 +56,7 @@ def user_login(request):
 
     else:
         return render(request, 'login.html', {})
+
 @login_required
 def homepage(request):
-
     return render(request, 'home.html', {})
