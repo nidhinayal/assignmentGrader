@@ -4,6 +4,11 @@
         <title> Home </title>
     </head>
     <body>
+        <a href="/home/">Home Page</a>
+
+        <a href="/portal/register/">Register</a>
+
+        <a href="/portal/login/">Login</a>
         {% if user.is_authenticated %}
         <p> WELCOME, thanks for logging in {{user.username}} </p>
         {% endif %}
